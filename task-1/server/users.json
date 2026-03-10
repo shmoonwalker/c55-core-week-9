@@ -113,7 +113,7 @@
     {
       "id": 11,
       "name": "John Doe",
-      "email": "john.doe@example.com",
+      "email": "johndoe@example.com",
       "password": "$2b$10$1Tcdeqw8FN8DltArXhfAfeXQH6GoHtq5LMzZkGe1fAoSdf5C.E6uq",
       "role": "user",
       "active": true,
