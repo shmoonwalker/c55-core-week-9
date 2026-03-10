@@ -125,6 +125,7 @@ export default class UI {
         category: category,
         offset: offset,
         limit: this.state.itemsPerPage,
+        sort : 'desc',
       },
       (data) => {
         // Update state with results
