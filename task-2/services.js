@@ -15,24 +15,26 @@ const API_BASE_URL = "https://api.nobelprize.org/2.1";
  * @param {Function} onSuccess - Callback for successful fetch
  * @param {Function} onError - Callback for fetch errors
  */
-export function fetchNobelPrizes(filters = {}, onSuccess, onError) {
-  let url = API_BASE_URL + "/nobelPrizes?";
+export function fetchNobelPrizes(
+  {
+    category = "all",
+    year = "all",
+    offset = 0,
+    limit = 10,
+    sort = "desc",
+  } = {},
+  onSuccess,
+  onError
+) {
   const params = new URLSearchParams();
 
-  if (filters.category != "all") {
-    params.append("nobelPrizeCategory", filters.category);
-  }
+  if (category !== "all") params.append("nobelPrizeCategory", category);
+  if (year !== "all") params.append("nobelPrizeYear", year);
 
-  if (filters.year != "all") {
-    params.append("nobelPrizeYear", filters.year);
-  }
-  params.append("sort", "desc");
-  if (filters.sort) {
-    params.append("sort", filters.sort);
-  }
-  params.append("offset", filters.offset);
-  params.append("limit", filters.limit);
+  params.append("sort", sort);
+  params.append("offset", offset);
+  params.append("limit", limit);
 
-  url = url + params.toString();
+  const url = `${API_BASE_URL}/nobelPrizes?${params.toString()}`;
   fetchData(url, onSuccess, onError);
 }
